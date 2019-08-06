@@ -124,7 +124,7 @@ status_t ucmd_reboot() {
 status_t ucmd_set_led_delay(char *args) {
     uint16_t o = 0;
     if(!args) {
-	return STATUS_INVALID_ARGUMENTS;
+    return STATUS_INVALID_ARGUMENTS;
     }
     //
     o = globals.led_delay;
@@ -140,9 +140,9 @@ status_t ucmd_echo(char *params) {
     //
     argc = parse_args(params, (char **) &args, CMD_MAX_ARGS);
     if(argc > 0) {
-	for(i=0; i < argc; i++) {
-	    usart_printf("echo: %u -> %s\n\r", i, args[i]);
-	}
+    for(i=0; i < argc; i++) {
+        usart_printf("echo: %u -> %s\n\r", i, args[i]);
+    }
     }
     return STATUS_SUCCESS;
 }
@@ -162,10 +162,10 @@ void USART1_IRQHandler(void) {
     }
     // backspace
     if(rdch == 0x8) {
-		if(globals.cmd_buffer_pos > 0) {
-		    usart_put_char(rdch);
-		    usart_put_char(0x20);
-		    usart_put_char(rdch);
+	if(globals.cmd_buffer_pos > 0) {
+	    usart_put_char(rdch);
+	    usart_put_char(0x20);
+	    usart_put_char(rdch);
             globals.cmd_buffer[globals.cmd_buffer_pos--] = NULL;
         }
         return;
@@ -196,7 +196,7 @@ int main() {
     status_t fn_err;
     //
     bzero(&globals, sizeof(globals));
-    globals.led_delay = 250;
+    globals.led_delay = 100;
     globals.fl_usart_buffer_ready = FALSE;
     globals.fl_usart_ignore_input = FALSE;
 
@@ -278,4 +278,3 @@ int main() {
         }
     }
 }
-

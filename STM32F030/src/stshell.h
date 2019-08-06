@@ -6,35 +6,36 @@
 #ifndef ST_SHELL__H
 #define ST_SHELL__H
 
-#include <stm32f10x.h>
-#include <stm32f10x_rcc.h>
-#include <stm32f10x_gpio.h>
-#include <stm32f10x_tim.h>
-#include <stm32f10x_usart.h>
-#include <misc.h>
+#include <stm32f0xx.h>
+#include <stm32f0xx_rcc.h>
+#include <stm32f0xx_gpio.h>
+#include <stm32f0xx_tim.h>
+#include <stm32f0xx_usart.h>
+#include <stm32f0xx_misc.h>
 #include <stdarg.h>
 
 // ------------------------------------------------------------------------------
 #define VESION_ID "ST-Shell (ver.1.0.0)"
-#define BOARD_ID  "STM32F103"
+#define BOARD_ID  "STM32F030"
 
-#define NULL 	0
-#define TRUE 	1
-#define FALSE	0
+#define NULL    0
+#define TRUE    1
+#define FALSE   0
 #define ARRAY_SIZE(a) ((sizeof(a))/(sizeof((a)[0])))
 
-#define CMD_BUFFER_SIZE			129
-#define CMD_NAME_LEN_MAX		16
-#define CMD_MAX_ARGS			10
-#define USART_BAUDRATE			115200
-#define USART_PRIORITY			14
+#define CMD_BUFFER_SIZE                 129
+#define CMD_NAME_LEN_MAX                16
+#define CMD_MAX_ARGS                    10
+#define USART_BAUDRATE                  115200
+#define USART_PRIORITY                  3
 
-#define	STATUS_SUCCESS			0x00
-#define STATUS_ERROR			0x01
-#define STATUS_NOT_IMPLEMENTED		0x02
-#define STATUS_INVALID_ARGUMENTS	0x03
-#define STATUS_UNKNOWN_COMMAND		0x04
-#define STATUS_COMMAND_TOO_LONG		0x05
+#define STATUS_SUCCESS                  0x00
+#define STATUS_ERROR                    0x01
+#define STATUS_NOT_IMPLEMENTED          0x02
+#define STATUS_INVALID_ARGUMENTS        0x03
+#define STATUS_UNKNOWN_COMMAND          0x04
+#define STATUS_COMMAND_TOO_LONG         0x05
+
 
 // ------------------------------------------------------------------------------
 typedef uint8_t status_t;
@@ -83,6 +84,5 @@ char usart_get_char(bool_t nowait);
 void usart_put_char(const char c);
 void usart_put_str(const char* str);
 void usart_printf(const char *fmt, ...);
-
 
 #endif
